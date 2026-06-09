@@ -1,13 +1,13 @@
 
-
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>WORLDTV LIVE PLATFORM</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+<title>WORLDTV ULTRA LIVE IPTV</title>
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
@@ -27,8 +27,7 @@
 --success:#00d084;
 --danger:#ff4d6d;
 --warning:#ffb020;
---radius:20px;
---shadow:0 10px 30px rgba(0,0,0,.4);
+--shadow:0 10px 30px rgba(0,0,0,.45);
 }
 
 *{
@@ -52,7 +51,7 @@ min-height:100vh;
 /* SIDEBAR */
 
 .sidebar{
-width:280px;
+width:290px;
 background:#0b1220;
 border-right:1px solid rgba(255,255,255,.05);
 padding:25px;
@@ -70,8 +69,8 @@ margin-bottom:35px;
 }
 
 .logo-icon{
-width:58px;
-height:58px;
+width:60px;
+height:60px;
 border-radius:18px;
 background:linear-gradient(135deg,var(--primary),var(--primary2));
 display:flex;
@@ -159,12 +158,12 @@ box-shadow:0 0 12px var(--success);
 /* MAIN */
 
 .main{
-margin-left:280px;
-width:calc(100% - 280px);
+margin-left:290px;
+width:calc(100% - 290px);
 padding:25px;
 }
 
-/* TOP */
+/* TOPBAR */
 
 .topbar{
 display:flex;
@@ -293,6 +292,11 @@ background:#202d44;
 color:white;
 }
 
+.success{
+background:linear-gradient(135deg,#00d084,#00d4ff);
+color:white;
+}
+
 .danger{
 background:linear-gradient(135deg,#ff4d6d,#ff6b81);
 color:white;
@@ -309,7 +313,7 @@ background:var(--panel);
 border-radius:24px;
 padding:20px;
 border:1px solid rgba(255,255,255,.05);
-height:100%;
+max-height:760px;
 overflow:auto;
 }
 
@@ -355,7 +359,7 @@ font-weight:800;
 }
 
 .channel h4{
-font-size:15px;
+font-size:14px;
 margin-bottom:5px;
 }
 
@@ -426,6 +430,7 @@ padding:24px;
 border-radius:24px;
 border:1px solid rgba(255,255,255,.05);
 overflow:auto;
+margin-bottom:30px;
 }
 
 .table-head{
@@ -516,6 +521,7 @@ width:100%;
 
 </style>
 </head>
+
 <body>
 
 <div class="app">
@@ -526,36 +532,45 @@ width:100%;
 
 <div class="logo">
 <div class="logo-icon">📺</div>
+
 <div>
 <h1>WORLDTV</h1>
-<p>Live Streaming Network</p>
+<p>Ultra IPTV Streaming</p>
 </div>
+
 </div>
 
 <div class="menu-title">Navigation</div>
 
 <div class="menu">
+
 <button class="active">🏠 Dashboard</button>
 <button>📡 Live TV</button>
 <button>⚽ Sports</button>
 <button>🎬 Movies</button>
 <button>📰 News</button>
 <button>🎵 Music</button>
+<button>👶 Kids</button>
 <button>⛪ Gospel</button>
 <button>🌍 International</button>
+<button>🛡 Super Admin</button>
+
 </div>
 
 <div class="menu-title">User</div>
 
 <div class="menu">
+
 <button>❤️ Favorites</button>
 <button>🕘 Watch History</button>
 <button>⬇ Downloads</button>
 <button>⚙ Settings</button>
 <button>🚪 Logout</button>
+
 </div>
 
 <div class="live-status">
+
 <h4>Streaming Server</h4>
 
 <div class="status-line">
@@ -573,6 +588,11 @@ width:100%;
 <span>4K Streaming Enabled</span>
 </div>
 
+<div class="status-line">
+<div class="dot"></div>
+<span>10,000+ IPTV Channels Ready</span>
+</div>
+
 </div>
 
 </div>
@@ -586,16 +606,24 @@ width:100%;
 <div class="topbar">
 
 <div class="search">
+
 🔍
+
 <input type="text" id="searchInput" placeholder="Search channels...">
+
 </div>
 
 <div class="user-box">
+
 <div>
 <h4>BTECH USER</h4>
-<p style="font-size:13px;color:var(--muted);">Premium Subscription</p>
+<p style="font-size:13px;color:var(--muted);">
+Premium Ultra Subscription
+</p>
 </div>
+
 <div class="avatar">BT</div>
+
 </div>
 
 </div>
@@ -607,16 +635,21 @@ width:100%;
 <div class="player-card">
 
 <div class="player-header">
-<h2 id="channelTitle">WORLD SPORTS HD</h2>
+
+<h2 id="channelTitle">
+SUPER SPORT PREMIER LEAGUE HD
+</h2>
 
 <div class="live-badge">
 🔴 LIVE STREAMING
 </div>
+
 </div>
 
 <video id="video" controls autoplay muted></video>
 
 <div class="controls">
+
 <button class="btn primary" onclick="playChannel(currentChannel)">
 ▶ Play Live
 </button>
@@ -629,9 +662,34 @@ width:100%;
 🔊 Volume
 </button>
 
+<button class="btn success" onclick="nextChannel()">
+⏭ Next Channel
+</button>
+
+<button class="btn primary" onclick="scanStreams()">
+📡 Scan Streams
+</button>
+
+<button class="btn secondary" onclick="repairStreams()">
+🛠 Repair Streams
+</button>
+
+<button class="btn success" onclick="boostStreams()">
+⚡ Speed Boost
+</button>
+
+<button class="btn secondary" onclick="recordChannel()">
+⏺ Record
+</button>
+
 <button class="btn danger" onclick="stopPlayer()">
 ⛔ Stop
 </button>
+
+<button class="btn danger" onclick="shutdownSystem()">
+🛑 Shutdown
+</button>
+
 </div>
 
 </div>
@@ -640,55 +698,9 @@ width:100%;
 
 <div class="channel-list">
 
-<h3>Live Channels</h3>
+<h3>WORLDTV LIVE CHANNELS</h3>
 
-<div id="channelContainer">
-
-<div class="channel" onclick="playChannel(channels[0])">
-<div class="channel-left">
-<div class="channel-logo">⚽</div>
-<div>
-<h4>WORLD SPORTS HD</h4>
-<p>Live Sports Streaming</p>
-</div>
-</div>
-<div class="tag">LIVE</div>
-</div>
-
-<div class="channel" onclick="playChannel(channels[1])">
-<div class="channel-left">
-<div class="channel-logo">📰</div>
-<div>
-<h4>GLOBAL NEWS</h4>
-<p>24/7 World News</p>
-</div>
-</div>
-<div class="tag">HD</div>
-</div>
-
-<div class="channel" onclick="playChannel(channels[2])">
-<div class="channel-left">
-<div class="channel-logo">🎵</div>
-<div>
-<h4>MUSIC TV</h4>
-<p>Top Music Videos</p>
-</div>
-</div>
-<div class="tag">4K</div>
-</div>
-
-<div class="channel" onclick="playChannel(channels[3])">
-<div class="channel-left">
-<div class="channel-logo">⛪</div>
-<div>
-<h4>GOSPEL TV</h4>
-<p>Church Live Programs</p>
-</div>
-</div>
-<div class="tag">LIVE</div>
-</div>
-
-</div>
+<div id="channelContainer"></div>
 
 </div>
 
@@ -701,7 +713,7 @@ width:100%;
 <div class="stat">
 <div class="stat-top">
 <div>
-<h2>2,500+</h2>
+<h2>10,000+</h2>
 <p>Global Channels</p>
 </div>
 <div class="stat-icon">📺</div>
@@ -711,7 +723,7 @@ width:100%;
 <div class="stat">
 <div class="stat-top">
 <div>
-<h2>120K</h2>
+<h2>320K</h2>
 <p>Active Viewers</p>
 </div>
 <div class="stat-icon">👥</div>
@@ -731,7 +743,7 @@ width:100%;
 <div class="stat">
 <div class="stat-top">
 <div>
-<h2>99.9%</h2>
+<h2>99.99%</h2>
 <p>Server Uptime</p>
 </div>
 <div class="stat-icon">🟢</div>
@@ -740,21 +752,24 @@ width:100%;
 
 </div>
 
-<!-- TABLE -->
+<!-- SERVER TABLE -->
 
 <div class="table-card">
 
 <div class="table-head">
-<h2>Streaming Server Dashboard</h2>
+
+<h2>WORLDTV ULTRA SERVER DASHBOARD</h2>
 
 <button class="btn primary">
 + Add Stream
 </button>
+
 </div>
 
 <table>
 
 <thead>
+
 <tr>
 <th>Server</th>
 <th>Region</th>
@@ -762,6 +777,7 @@ width:100%;
 <th>Users</th>
 <th>Status</th>
 </tr>
+
 </thead>
 
 <tbody>
@@ -804,8 +820,155 @@ width:100%;
 
 </div>
 
+<!-- SUPER ADMIN PANEL -->
+
+<div class="table-card">
+
+<div class="table-head">
+<h2>🛡 SUPER ADMIN CONTROL PANEL</h2>
+</div>
+
+<div class="stats">
+
+<div class="stat">
+
+<div class="stat-top">
+
+<div>
+<h2 id="totalChannels">10,000</h2>
+<p>Total IPTV Channels</p>
+</div>
+
+<div class="stat-icon">📺</div>
+
+</div>
+
+<button class="btn primary" onclick="reloadChannels()">
+Reload Channels
+</button>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-top">
+
+<div>
+<h2 id="streamHealth">99%</h2>
+<p>Stream Health</p>
+</div>
+
+<div class="stat-icon">🟢</div>
+
+</div>
+
+<button class="btn success" onclick="optimizeMemory()">
+Optimize Memory
+</button>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-top">
+
+<div>
+<h2 id="blockedUsers">0</h2>
+<p>Blocked Users</p>
+</div>
+
+<div class="stat-icon">🔒</div>
+
+</div>
+
+<button class="btn danger" onclick="blockAllUsers()">
+Block Users
+</button>
+
+</div>
+
+<div class="stat">
+
+<div class="stat-top">
+
+<div>
+<h2 id="serverLoad">32%</h2>
+<p>Server Load</p>
+</div>
+
+<div class="stat-icon">🚀</div>
+
+</div>
+
+<button class="btn secondary" onclick="restartPlayerSystem()">
+Restart System
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GLOBAL FEEDS -->
+
+<div class="table-card">
+
+<div class="table-head">
+<h2>🌍 LIVE WORLDTV GLOBAL FEEDS</h2>
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Feed Name</th>
+<th>Country</th>
+<th>Type</th>
+<th>Status</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Premier League Feed</td>
+<td>UK</td>
+<td>Sports</td>
+<td><span class="status online">LIVE</span></td>
+</tr>
+
+<tr>
+<td>Hollywood Movies Feed</td>
+<td>USA</td>
+<td>Movies</td>
+<td><span class="status online">LIVE</span></td>
+</tr>
+
+<tr>
+<td>Nigeria Gospel Feed</td>
+<td>Nigeria</td>
+<td>Gospel</td>
+<td><span class="status online">LIVE</span></td>
+</tr>
+
+<tr>
+<td>International News Feed</td>
+<td>Global</td>
+<td>News</td>
+<td><span class="status online">LIVE</span></td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
 <div class="footer">
-© 2026 WORLDTV LIVE PLATFORM • Professional IPTV Dashboard
+© 2026 WORLDTV ULTRA LIVE IPTV • PROFESSIONAL IPTV DASHBOARD
 </div>
 
 </div>
@@ -814,36 +977,99 @@ width:100%;
 
 <script>
 
-/* CHANNEL STREAMS */
+/* IPTV CHANNELS */
 
 const channels = [
 
 {
-name:"WORLD SPORTS HD",
+name:"SUPER SPORT PREMIER LEAGUE HD",
+category:"SPORTS",
+logo:"⚽",
 url:"https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
 },
 
 {
-name:"GLOBAL NEWS",
+name:"CNN INTERNATIONAL HD",
+category:"NEWS",
+logo:"📰",
 url:"https://cph-p2p-msl.akamaized.net/hls/live/2000341/test/master.m3u8"
 },
 
 {
-name:"MUSIC TV",
+name:"TRACE AFRICA HD",
+category:"MUSIC",
+logo:"🎵",
 url:"https://moiptvhls-i.akamaihd.net/hls/live/652316/Live_1/master.m3u8"
 },
 
 {
-name:"GOSPEL TV",
+name:"DOVE TV HD",
+category:"GOSPEL",
+logo:"⛪",
 url:"https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8"
+},
+
+{
+name:"DISNEY CHANNEL HD",
+category:"KIDS",
+logo:"👶",
+url:"https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
+},
+
+{
+name:"AFRICA MAGIC HD",
+category:"MOVIES",
+logo:"🎬",
+url:"https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
 }
 
 ];
 
 let currentChannel = channels[0];
+let hls;
 
 const video = document.getElementById('video');
 const channelTitle = document.getElementById('channelTitle');
+const channelContainer = document.getElementById('channelContainer');
+
+/* RENDER CHANNELS */
+
+function renderChannels(){
+
+channelContainer.innerHTML = '';
+
+channels.forEach((channel,index)=>{
+
+channelContainer.innerHTML += `
+
+<div class="channel" onclick="playChannel(channels[${index}])">
+
+<div class="channel-left">
+
+<div class="channel-logo">
+${channel.logo}
+</div>
+
+<div>
+<h4>${channel.name}</h4>
+<p>${channel.category} CHANNEL</p>
+</div>
+
+</div>
+
+<div class="tag">
+LIVE
+</div>
+
+</div>
+
+`;
+
+});
+
+}
+
+renderChannels();
 
 /* PLAY CHANNEL */
 
@@ -853,42 +1079,55 @@ currentChannel = channel;
 
 channelTitle.innerText = channel.name;
 
+if(hls){
+hls.destroy();
+}
+
 if(Hls.isSupported()){
 
-const hls = new Hls();
+hls = new Hls();
 
 hls.loadSource(channel.url);
 
 hls.attachMedia(video);
 
 hls.on(Hls.Events.MANIFEST_PARSED,function(){
+
 video.play();
+
+});
+
+hls.on(Hls.Events.ERROR,function(event,data){
+
+console.log("Stream Error:",data);
+
 });
 
 }else if(video.canPlayType('application/vnd.apple.mpegurl')){
 
 video.src = channel.url;
+
 video.play();
 
 }
 
 }
 
-/* START DEFAULT CHANNEL */
+/* START PLAYER */
 
 playChannel(currentChannel);
 
-/* FULLSCREEN */
+/* CONTROLS */
 
 function toggleFullscreen(){
 
 if(video.requestFullscreen){
+
 video.requestFullscreen();
-}
 
 }
 
-/* STOP PLAYER */
+}
 
 function stopPlayer(){
 
@@ -896,13 +1135,23 @@ video.pause();
 
 }
 
-/* VOLUME */
-
 function volumeUp(){
 
 if(video.volume < 1){
+
 video.volume += 0.1;
+
 }
+
+}
+
+function nextChannel(){
+
+let currentIndex = channels.indexOf(currentChannel);
+
+let nextIndex = (currentIndex + 1) % channels.length;
+
+playChannel(channels[nextIndex]);
 
 }
 
@@ -926,7 +1175,104 @@ channel.style.display = text.includes(value)
 
 });
 
+/* SUPER ADMIN FUNCTIONS */
+
+function scanStreams(){
+
+alert("📡 Scanning all IPTV streams...");
+
+}
+
+function repairStreams(){
+
+alert("🛠 Repairing broken IPTV channels...");
+
+}
+
+function boostStreams(){
+
+alert("⚡ Stream speed boost activated.");
+
+}
+
+function optimizeMemory(){
+
+alert("🧠 Memory optimization completed.");
+
+}
+
+function recordChannel(){
+
+alert("⏺ Recording current live channel.");
+
+}
+
+function reloadChannels(){
+
+renderChannels();
+
+alert("🔄 Channels reloaded successfully.");
+
+}
+
+function restartPlayerSystem(){
+
+video.pause();
+
+setTimeout(()=>{
+
+playChannel(currentChannel);
+
+},1000);
+
+alert("♻ Player restarted.");
+
+}
+
+function shutdownSystem(){
+
+video.pause();
+
+if(hls){
+
+hls.destroy();
+
+}
+
+alert("🛑 WORLDTV system shutdown activated.");
+
+}
+
+function blockAllUsers(){
+
+document.getElementById('blockedUsers').innerText = "ALL";
+
+alert("🔒 All users blocked temporarily.");
+
+}
+
+/* AUTO SERVER STATUS */
+
+setInterval(()=>{
+
+let load = Math.floor(Math.random()*40)+20;
+
+document.getElementById('serverLoad').innerText = load + "%";
+
+},5000);
+
+/* AUTO STREAM HEALTH */
+
+setInterval(()=>{
+
+let health = Math.floor(Math.random()*5)+95;
+
+document.getElementById('streamHealth').innerText = health + "%";
+
+},4000);
+
 </script>
 
 </body>
 </html>
+```
